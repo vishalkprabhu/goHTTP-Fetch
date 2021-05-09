@@ -1,6 +1,7 @@
-#Example how to easily consume JSON APIs with Go (golang) 
+#Example how to easily consume JSON APIs with Go (golang)
 
 ###Structures
+
 ```go
 type Geo struct {
 	Lat string `json:"lat"`
@@ -34,6 +35,7 @@ type User struct {
 ```
 
 ###Function which returns json data from API
+
 ```go
 func getResponseData(url string) []byte {
 	response, err := http.Get(url)
@@ -47,6 +49,7 @@ func getResponseData(url string) []byte {
 ```
 
 ###Main function
+
 ```go
 func main() {
 	contents := getResponseData("http://jsonplaceholder.typicode.com/users")
@@ -54,6 +57,7 @@ func main() {
 	json.Unmarshal(contents, &users)  //Parse JSON data and stores the result in var users
 
 	//users geo location
+	//Email is also added in the code.
 	for _, user := range users {
 		fmt.Printf("%s - Lat: %s Lng: %s \n", user.Name, user.Address.Geo.Lat, user.Address.Geo.Lng)
 	}

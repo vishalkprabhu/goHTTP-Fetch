@@ -1,42 +1,45 @@
 package main
 
 import (
-	"fmt"
-	"net/http"
-	"io/ioutil"
 	"encoding/json"
+	"fmt"
+	"io/ioutil"
+	"net/http"
 )
 
+// Geo list
 type Geo struct {
 	Lat string `json:"lat"`
 	Lng string `json:"lng"`
 }
 
+//Company list
 type Company struct {
-	Name string `json:"name"`
+	Name        string `json:"name"`
 	CatchPhrase string `json:"catchPhrase"`
-	Bs string `json:"bs"`
+	Bs          string `json:"bs"`
 }
 
+//Address list
 type Address struct {
-	Street string `json:"street"`
-	Suite string `json:"suite"`
-	City string `json:"city"`
+	Street  string `json:"street"`
+	Suite   string `json:"suite"`
+	City    string `json:"city"`
 	ZipCode string `json:"zipcode"`
-	Geo Geo `json:"geo"`
+	Geo     Geo    `json:"geo"`
 }
 
+//User list
 type User struct {
-	Id int `json:"id"`
-	Name string `json:"name"`
-	Username string `json:"username"`
-	Email string `json:"email"`
-	Company Company `json:"company"`
-	Address Address `json:"address"`
-	Phone string `json:"phone"`
-	Website string `json:"website"`
+	ID       int     `json:"id"`
+	Name     string  `json:"name"`
+	Username string  `json:"username"`
+	Email    string  `json:"email"`
+	Company  Company `json:"company"`
+	Address  Address `json:"address"`
+	Phone    string  `json:"phone"`
+	Website  string  `json:"website"`
 }
-
 
 func getResponseData(url string) []byte {
 	response, err := http.Get(url)
@@ -55,6 +58,6 @@ func main() {
 
 	//print users geo location
 	for _, user := range users {
-		fmt.Printf("%s - Lat: %s Lng: %s \n", user.Name, user.Address.Geo.Lat, user.Address.Geo.Lng)
+		fmt.Printf("Username: %s - EMAIL: %s - Lat: %s Lng: %s \n", user.Name, user.Email, user.Address.Geo.Lat, user.Address.Geo.Lng)
 	}
 }
