@@ -1,6 +1,6 @@
-#Example how to easily consume JSON APIs with Go (golang)
+# HTTP Fetch Example, how to easily consume JSON APIs with Go (golang)
 
-###Structures
+## Structures
 
 ```go
 type Geo struct {
@@ -34,7 +34,7 @@ type User struct {
 }
 ```
 
-###Function which returns json data from API
+### Function which returns json data from API
 
 ```go
 func getResponseData(url string) []byte {
@@ -48,7 +48,7 @@ func getResponseData(url string) []byte {
 }
 ```
 
-###Main function
+### Main function
 
 ```go
 func main() {
